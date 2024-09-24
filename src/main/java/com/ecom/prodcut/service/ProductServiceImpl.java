@@ -1,6 +1,5 @@
 package com.ecom.prodcut.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,7 +57,15 @@ public class ProductServiceImpl implements ProductService {
 		if (entityProduct != null)
 			BeanUtils.copyProperties(entityProduct, product);
 		return product;
+	
+	}
 
+	@Override
+	public List<Product> getByName(String name) {
+		
+		return productRepositiry.findByName(name).stream().map(product -> convert(product)).collect(Collectors.toList());
+
+		
 	}
 
 }
