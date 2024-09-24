@@ -37,7 +37,6 @@ public class ProdcutController {
 	@PostMapping()
 	public ResponseEntity<Response> create(@RequestBody Product product) {
 		log.info("Started executing Create...");
-
 		return new ResponseEntity<Response>(Response.builder().product(productService.create(product)).statusCode(200)
 				.statusMsg("Successfully created product.").build(), HttpStatus.CREATED);
 

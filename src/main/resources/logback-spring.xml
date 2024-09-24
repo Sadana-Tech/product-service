@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOG_DIR" value="logs" />
+	<property name="LOG_FILE" value="product-service" />
+	
+	<springProperty scope="context" name="APP_NAME"
+		source="spring.application.name" />
+
+	<import class="ch.qos.logback.core.ConsoleAppender" />
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<timestamp />
+				<loggerName />
+				<logLevel />
+				<message />
+			</providers>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_DIR}/${LOG_FILE}.%d{yyyy-MM-dd_HH-mm}.log
+			</fileNamePattern>
+			<maxHistory>300000</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder
+			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+			<providers>
+				<timestamp />
+				<loggerName />
+				<logLevel />
+				<message />
+			</providers>
+		</encoder>
+	</appender>
+
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
