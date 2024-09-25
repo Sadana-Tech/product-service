@@ -44,6 +44,7 @@ public class ProdcutController {
 
 	@PutMapping
 	public ResponseEntity<Product> update(@RequestBody Product product) {
+		log.info("Started executing updating...");
 		return new ResponseEntity<Product>(productService.create(product), HttpStatus.ACCEPTED);
 	}
 
