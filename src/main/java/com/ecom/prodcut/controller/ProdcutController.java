@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecom.prodcut.model.Product;
 import com.ecom.prodcut.service.ProductService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/api/product")
-
+@Slf4j
 public class ProdcutController {
 
 	private ProductService productService;
@@ -32,6 +34,7 @@ public class ProdcutController {
 
 	@PostMapping()
 	public ResponseEntity<Product> create(@RequestBody Product product) {
+		log.info("Started");
 		return new ResponseEntity<Product>(productService.create(product), HttpStatus.CREATED);
 
 	}
