@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+  application:
+  name: product-service
+  datasource:
+    url: jdbc:mysql://localhost/product?
+    username: root
+    password: Kriday@6317
+
+  jpa:
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.MySQLDialect
+        ddl-auto: update
+
+management:
+  endpoints.web.exposure.include:
+    - '*'
+  endpoint.health.show-details: always
+  health.circuitbreakers.enabled: true
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
