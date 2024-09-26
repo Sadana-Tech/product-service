@@ -1,0 +1,24 @@
+{"@timestamp":"2024-09-26T21:09:22.5657153+05:30","logger_name":"org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin","level":"INFO","message":"Application shutdown requested."}
+{"@timestamp":"2024-09-26T21:09:23.3174768+05:30","logger_name":"org.apache.coyote.http11.Http11NioProtocol","level":"INFO","message":"Stopping ProtocolHandler [\"http-nio-8080\"]"}
+{"@timestamp":"2024-09-26T21:09:23.7827135+05:30","logger_name":"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean","level":"INFO","message":"Closing JPA EntityManagerFactory for persistence unit 'default'"}
+{"@timestamp":"2024-09-26T21:09:24.4708707+05:30","logger_name":"com.zaxxer.hikari.HikariDataSource","level":"INFO","message":"HikariPool-1 - Shutdown initiated..."}
+{"@timestamp":"2024-09-26T21:09:25.3085646+05:30","logger_name":"com.zaxxer.hikari.HikariDataSource","level":"INFO","message":"HikariPool-1 - Shutdown completed."}
+{"@timestamp":"2024-09-26T21:09:52.3874218+05:30","logger_name":"com.ecom.prodcut.ProductServiceApplication","level":"INFO","message":"Starting ProductServiceApplication using Java 17.0.11 with PID 13240 (E:\\CV2_Project\\product-service\\target\\classes started by HP in E:\\CV2_Project\\product-service)"}
+{"@timestamp":"2024-09-26T21:09:52.4155097+05:30","logger_name":"com.ecom.prodcut.ProductServiceApplication","level":"INFO","message":"No active profile set, falling back to 1 default profile: \"default\""}
+{"@timestamp":"2024-09-26T21:09:54.5704417+05:30","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","level":"INFO","message":"Bootstrapping Spring Data JPA repositories in DEFAULT mode."}
+{"@timestamp":"2024-09-26T21:09:54.6971152+05:30","logger_name":"org.springframework.data.repository.config.RepositoryConfigurationDelegate","level":"INFO","message":"Finished Spring Data repository scanning in 98 ms. Found 1 JPA repository interface."}
+{"@timestamp":"2024-09-26T21:09:55.9789015+05:30","logger_name":"org.springframework.boot.web.embedded.tomcat.TomcatWebServer","level":"INFO","message":"Tomcat initialized with port 8080 (http)"}
+{"@timestamp":"2024-09-26T21:09:56.0167345+05:30","logger_name":"org.apache.coyote.http11.Http11NioProtocol","level":"INFO","message":"Initializing ProtocolHandler [\"http-nio-8080\"]"}
+{"@timestamp":"2024-09-26T21:09:56.0227183+05:30","logger_name":"org.apache.catalina.core.StandardService","level":"INFO","message":"Starting service [Tomcat]"}
+{"@timestamp":"2024-09-26T21:09:56.023375+05:30","logger_name":"org.apache.catalina.core.StandardEngine","level":"INFO","message":"Starting Servlet engine: [Apache Tomcat/10.1.30]"}
+{"@timestamp":"2024-09-26T21:09:56.1667785+05:30","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","level":"INFO","message":"Initializing Spring embedded WebApplicationContext"}
+{"@timestamp":"2024-09-26T21:09:56.1686889+05:30","logger_name":"org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext","level":"INFO","message":"Root WebApplicationContext: initialization completed in 3658 ms"}
+{"@timestamp":"2024-09-26T21:09:56.6670022+05:30","logger_name":"org.hibernate.jpa.internal.util.LogHelper","level":"INFO","message":"HHH000204: Processing PersistenceUnitInfo [name: default]"}
+{"@timestamp":"2024-09-26T21:09:56.8359965+05:30","logger_name":"org.hibernate.Version","level":"INFO","message":"HHH000412: Hibernate ORM core version 6.5.3.Final"}
+{"@timestamp":"2024-09-26T21:09:56.9210399+05:30","logger_name":"org.hibernate.cache.internal.RegionFactoryInitiator","level":"INFO","message":"HHH000026: Second-level cache disabled"}
+{"@timestamp":"2024-09-26T21:09:57.5392998+05:30","logger_name":"org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo","level":"INFO","message":"No LoadTimeWeaver setup: ignoring JPA class transformer"}
+{"@timestamp":"2024-09-26T21:09:57.6050291+05:30","logger_name":"com.zaxxer.hikari.HikariDataSource","level":"INFO","message":"HikariPool-1 - Starting..."}
+{"@timestamp":"2024-09-26T21:09:58.2157831+05:30","logger_name":"com.zaxxer.hikari.pool.HikariPool","level":"INFO","message":"HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77e5c765"}
+{"@timestamp":"2024-09-26T21:09:58.2233618+05:30","logger_name":"com.zaxxer.hikari.HikariDataSource","level":"INFO","message":"HikariPool-1 - Start completed."}
+{"@timestamp":"2024-09-26T21:09:58.402489+05:30","logger_name":"org.hibernate.orm.deprecation","level":"WARN","message":"HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)"}
+{"@timestamp":"2024-09-26T21:09:58.4045166+05:30","logger_name":"org.hibernate.orm.deprecation","level":"WARN","message":"HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead"}

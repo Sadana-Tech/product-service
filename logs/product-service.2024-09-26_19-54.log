@@ -1,0 +1,7 @@
+{"@timestamp":"2024-09-26T19:54:01.9369731+05:30","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","level":"INFO","message":"Exposing 14 endpoints beneath base path '/check'"}
+{"@timestamp":"2024-09-26T19:54:02.1417772+05:30","logger_name":"org.apache.coyote.http11.Http11NioProtocol","level":"INFO","message":"Starting ProtocolHandler [\"http-nio-8080\"]"}
+{"@timestamp":"2024-09-26T19:54:02.20326+05:30","logger_name":"org.springframework.boot.web.embedded.tomcat.TomcatWebServer","level":"INFO","message":"Tomcat started on port 8080 (http) with context path '/'"}
+{"@timestamp":"2024-09-26T19:54:02.2332142+05:30","logger_name":"com.ecom.prodcut.ProductServiceApplication","level":"INFO","message":"Started ProductServiceApplication in 20.595 seconds (process running for 22.996)"}
+{"@timestamp":"2024-09-26T19:54:03.453915+05:30","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","level":"INFO","message":"Initializing Spring DispatcherServlet 'dispatcherServlet'"}
+{"@timestamp":"2024-09-26T19:54:03.4549134+05:30","logger_name":"org.springframework.web.servlet.DispatcherServlet","level":"INFO","message":"Initializing Servlet 'dispatcherServlet'"}
+{"@timestamp":"2024-09-26T19:54:03.4579054+05:30","logger_name":"org.springframework.web.servlet.DispatcherServlet","level":"INFO","message":"Completed initialization in 2 ms"}

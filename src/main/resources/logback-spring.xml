@@ -27,7 +27,7 @@
 			<fileNamePattern>${LOG_DIR}/${LOG_FILE}.%d{yyyy-MM-dd_HH-mm}.log
 			</fileNamePattern>
 			<maxHistory>300000</maxHistory>
-			<totalSizeCap>3GB</totalSizeCap>
+			<totalSizeCap>1GB</totalSizeCap>
 		</rollingPolicy>
 		<encoder
 			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">

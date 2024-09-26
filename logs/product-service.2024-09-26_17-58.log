@@ -1,0 +1,3 @@
+{"@timestamp":"2024-09-26T17:58:00.3452687+05:30","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","level":"INFO","message":"Initializing Spring DispatcherServlet 'dispatcherServlet'"}
+{"@timestamp":"2024-09-26T17:58:00.3502563+05:30","logger_name":"org.springframework.web.servlet.DispatcherServlet","level":"INFO","message":"Initializing Servlet 'dispatcherServlet'"}
+{"@timestamp":"2024-09-26T17:58:00.3552433+05:30","logger_name":"org.springframework.web.servlet.DispatcherServlet","level":"INFO","message":"Completed initialization in 4 ms"}
