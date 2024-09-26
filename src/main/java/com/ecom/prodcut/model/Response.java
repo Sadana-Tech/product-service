@@ -13,9 +13,11 @@ import lombok.Data;
 @JsonInclude(Include.NON_NULL)
 public class Response {
 
-	private int statusCode;
+	private Integer statusCode;
 	private String statusMsg;
 	private Product product;
 	private List<Product> products;
+	private Integer errorCode;
+	private String errorMsg;
 
 }

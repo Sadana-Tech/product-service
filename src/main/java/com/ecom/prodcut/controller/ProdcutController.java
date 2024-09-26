@@ -1,7 +1,5 @@
 package com.ecom.prodcut.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecom.prodcut.exception.ProductException;
 import com.ecom.prodcut.model.Product;
 import com.ecom.prodcut.model.Response;
 import com.ecom.prodcut.service.ProductService;
@@ -49,9 +48,9 @@ public class ProdcutController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Product>> getAll() {
-
-		return new ResponseEntity<List<Product>>(productService.getAll(), HttpStatus.ACCEPTED);
+	public ResponseEntity<Response> getAll() {
+		return 	new ResponseEntity<Response>(Response.builder().products(productService.getAll()).build(),
+				HttpStatus.ACCEPTED);
 
 	}
 
@@ -67,9 +66,16 @@ public class ProdcutController {
 	}
 
 	@GetMapping("/")
-	public ResponseEntity<List<Product>> getById(@RequestParam String name) {
+	public ResponseEntity<Response> getById(@RequestParam String name) {
+		try {
+			return new ResponseEntity<Response>(Response.builder().products(productService.getByName(name)).build(),
+					HttpStatus.ACCEPTED);
+		} catch (ProductException e) {
+			return new ResponseEntity<Response>(
+					Response.builder().errorCode(e.getErrorCode()).errorMsg(e.getErrorDec()).build(),
+					HttpStatus.ACCEPTED);
 
-		return new ResponseEntity<List<Product>>(productService.getByName(name), HttpStatus.ACCEPTED);
+		}
+
 	}
-
 }
