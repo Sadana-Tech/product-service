@@ -1,0 +1,5 @@
+{"@timestamp":"2024-09-26T21:23:39.5149648+05:30","logger_name":"org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin","level":"INFO","message":"Application shutdown requested."}
+{"@timestamp":"2024-09-26T21:23:41.4899104+05:30","logger_name":"org.apache.coyote.http11.Http11NioProtocol","level":"INFO","message":"Stopping ProtocolHandler [\"http-nio-8080\"]"}
+{"@timestamp":"2024-09-26T21:23:42.9578298+05:30","logger_name":"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean","level":"INFO","message":"Closing JPA EntityManagerFactory for persistence unit 'default'"}
+{"@timestamp":"2024-09-26T21:23:42.9967253+05:30","logger_name":"com.zaxxer.hikari.HikariDataSource","level":"INFO","message":"HikariPool-1 - Shutdown initiated..."}
+{"@timestamp":"2024-09-26T21:23:43.094467+05:30","logger_name":"com.zaxxer.hikari.HikariDataSource","level":"INFO","message":"HikariPool-1 - Shutdown completed."}

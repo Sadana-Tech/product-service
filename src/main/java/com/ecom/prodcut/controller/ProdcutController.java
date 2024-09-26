@@ -1,5 +1,7 @@
 package com.ecom.prodcut.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,46 +38,34 @@ public class ProdcutController {
 	@PostMapping()
 	public ResponseEntity<Response> create(@RequestBody Product product) {
 		log.info("Started executing Create...");
-		return new ResponseEntity<Response>(Response.builder().product(productService.create(product)).statusCode(200)
+		return new ResponseEntity<Response>(Response.builder().product(productService.create(product)).statusCode(HttpStatus.CREATED.value())
 				.statusMsg("Successfully created product.").build(), HttpStatus.CREATED);
 
 	}
 
 	@PutMapping
-	public ResponseEntity<Product> update(@RequestBody Product product) {
+	public ResponseEntity<Response> update(@RequestBody Product product,@RequestParam int id) {
 		log.info("Started executing updating...");
-		return new ResponseEntity<Product>(productService.create(product), HttpStatus.ACCEPTED);
+		return new ResponseEntity<Response>(Response.builder().product(productService.update(product,id)).statusCode(HttpStatus.ACCEPTED.value())
+				.statusMsg("Successfully updated product.").build(), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping
 	public ResponseEntity<Response> getAll() {
-		return 	new ResponseEntity<Response>(Response.builder().products(productService.getAll()).build(),
-				HttpStatus.ACCEPTED);
+		return 	new ResponseEntity<Response>(Response.builder().products(productService.getAll()).statusCode(HttpStatus.ACCEPTED.value())
+				.statusMsg("Successfully featch all products.").build(),HttpStatus.ACCEPTED);
 
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<Product> getById(@PathVariable Integer id) {
-		return new ResponseEntity<Product>(productService.getById(id), HttpStatus.ACCEPTED);
+	public ResponseEntity<Response> getById(@PathVariable Integer id) {
+		return new ResponseEntity<Response>(Response.builder().product(productService.getById(id)).statusCode(HttpStatus.ACCEPTED.value())
+				.statusMsg("Successfully featch product by id.").build(), HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("{id}")
-	public ResponseEntity<Integer> delete(@PathVariable Integer id) {
+	public ResponseEntity<Response> delete(@PathVariable Integer id) {
 		productService.delete(id);
-		return new ResponseEntity<Integer>(id, HttpStatus.ACCEPTED);
-	}
-
-	@GetMapping("/")
-	public ResponseEntity<Response> getById(@RequestParam String name) {
-		try {
-			return new ResponseEntity<Response>(Response.builder().products(productService.getByName(name)).build(),
-					HttpStatus.ACCEPTED);
-		} catch (ProductException e) {
-			return new ResponseEntity<Response>(
-					Response.builder().errorCode(e.getErrorCode()).errorMsg(e.getErrorDec()).build(),
-					HttpStatus.ACCEPTED);
-
-		}
-
+		return new ResponseEntity<Response>(Response.builder().statusCode(HttpStatus.ACCEPTED.value()).statusMsg("Sucessfully product id:"+id+" Deleted.").build(), HttpStatus.ACCEPTED);
 	}
 }

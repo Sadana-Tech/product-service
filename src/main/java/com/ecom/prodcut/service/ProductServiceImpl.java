@@ -38,25 +38,60 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product create(Product product) {
-		return convert(productRepositiry.save(convert(product)));
+		try {
+			return convert(productRepositiry.save(convert(product)));
+		} catch (Exception e) {
+			throw new ProductException(ErrorConstants.TECHNICAL_SERVER_EXCEPTION.getErrorCode(),
+					ErrorConstants.TECHNICAL_SERVER_EXCEPTION.getErrorMsg());
+		}
 	}
 
 	@Override
-	public Product update(Product product) {
-		return convert(productRepositiry.save(convert(product)));
+	public Product update(Product product , int id) {
+		
+		try {		
+			product.setId(id);
+			return convert(productRepositiry.save(convert(product)));
+			
+		}catch(ProductException e) {
+			throw new ProductException(ErrorConstants.PRODUCT_NOT_EXIST.getErrorCode(),
+					ErrorConstants.PRODUCT_NOT_EXIST.getErrorMsg());
+		}
 	}
 
 	@Override
 	public void delete(int id) {
-
-		productRepositiry.deleteById(id);
+		try {
+			productRepositiry.deleteById(id);
+		}catch(ProductException e) {
+			throw new ProductException(ErrorConstants.UNABLE_TO_DELETE.getErrorCode(),
+					ErrorConstants.UNABLE_TO_DELETE.getErrorMsg());
+		}
 	}
 
 	@Override
 	public Product getById(int id) {
-
-		return convert(productRepositiry.findById(id).orElse(null));
+		try {
+			return convert(productRepositiry.findById(id).orElse(null));
+		}catch(ProductException e) {
+			throw new ProductException(ErrorConstants.PRODUCT_NOT_EXIST.getErrorCode(),
+					ErrorConstants.PRODUCT_NOT_EXIST.getErrorMsg());
+		}
 	}
+
+
+	@Override
+	public List<Product> getByName(String name) {
+		try {
+			return productRepositiry.findByName(name).stream().map(product -> convert(product))
+					.collect(Collectors.toList());
+		}catch(ProductException e) {
+			throw new ProductException(ErrorConstants.PRODUCT_NOT_EXIST.getErrorCode(),
+					ErrorConstants.PRODUCT_NOT_EXIST.getErrorMsg());
+		}
+
+	}
+
 
 	private com.ecom.prodcut.entity.Product convert(Product product) {
 
@@ -71,14 +106,6 @@ public class ProductServiceImpl implements ProductService {
 		if (entityProduct != null)
 			BeanUtils.copyProperties(entityProduct, product);
 		return product;
-
-	}
-
-	@Override
-	public List<Product> getByName(String name) {
-
-		return productRepositiry.findByName(name).stream().map(product -> convert(product))
-				.collect(Collectors.toList());
 
 	}
 
