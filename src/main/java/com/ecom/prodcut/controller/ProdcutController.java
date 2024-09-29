@@ -35,41 +35,49 @@ public class ProdcutController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<Response> create(@RequestBody Product product) {
+	public ResponseEntity<Response> create(@RequestBody Product product) 
+	{
 		log.info("Started executing Create...");
 		return new ResponseEntity<Response>(Response.builder().product(productService.create(product)).statusCode(200)
 				.statusMsg("Successfully created product.").build(), HttpStatus.CREATED);
-
 	}
 
 	@PutMapping
-	public ResponseEntity<Product> update(@RequestBody Product product) {
+	public ResponseEntity<Response> update(@RequestBody Product product) 
+	{
 		log.info("Started executing updating...");
-		return new ResponseEntity<Product>(productService.create(product), HttpStatus.ACCEPTED);
+		return new ResponseEntity<Response>(Response.builder().product(productService.update(product)).statusCode(200)
+				.statusMsg("Successfully updated product.").build(), HttpStatus.CREATED);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Product>> getAll() {
-
-		return new ResponseEntity<List<Product>>(productService.getAll(), HttpStatus.ACCEPTED);
-
+	public ResponseEntity<Response> getAll() 
+	{
+		return new ResponseEntity<Response>(Response.builder().products(productService.getAll()).statusCode(200)
+				.statusMsg("Successfully fetched all the product.").build(), HttpStatus.CREATED);
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<Product> getById(@PathVariable Integer id) {
-		return new ResponseEntity<Product>(productService.getById(id), HttpStatus.ACCEPTED);
+	public ResponseEntity<Response> getById(@PathVariable Integer id) 
+	{
+	    log.info("Started executing GetById...");
+	    return new ResponseEntity<Response>(Response.builder().product(productService.getById(id)).statusCode(200)
+	                    .statusMsg(+id +"  "+ " :Successfully fetched product by ID.").build(),HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
-	public ResponseEntity<Integer> delete(@PathVariable Integer id) {
+	public ResponseEntity<Response> delete(@PathVariable Integer id) 
+	{
 		productService.delete(id);
-		return new ResponseEntity<Integer>(id, HttpStatus.ACCEPTED);
+		return new ResponseEntity<Response>(Response.builder().statusCode(200)
+				.statusMsg("Successfully deletd product by Id...").build(), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/")
-	public ResponseEntity<List<Product>> getById(@RequestParam String name) {
-
-		return new ResponseEntity<List<Product>>(productService.getByName(name), HttpStatus.ACCEPTED);
+	public ResponseEntity<Response> getById(@RequestParam String name) 
+	{
+		return new ResponseEntity<Response>(Response.builder().products(productService.getByName(name)).statusCode(200)
+				.statusMsg("Successfully fetched product by name..").build(), HttpStatus.CREATED);
 	}
 
 }
