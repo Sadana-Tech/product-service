@@ -5,12 +5,19 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ecom.prodcut.constants.ErrorConstants;
 import com.ecom.prodcut.exception.ProductException;
 import com.ecom.prodcut.model.Product;
+import com.ecom.prodcut.model.Response;
 import com.ecom.prodcut.repository.ProductRepositiry;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -18,7 +25,11 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductRepositiry productRepositiry;
 
+	@Autowired
+	private RedisTemplate<String, Product> redisTemplate;
+
 	@Override
+	// @CircuitBreaker(name = "product-service", fallbackMethod = "fallbackMethod")
 	public List<Product> getAll() {
 		List<Product> products = null;
 		try {
@@ -38,6 +49,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product create(Product product) {
+		redisTemplate.opsForValue().set(String.valueOf(product.getId()), product);
 		return convert(productRepositiry.save(convert(product)));
 	}
 
@@ -55,7 +67,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getById(int id) {
 
-		return convert(productRepositiry.findById(id).orElse(null));
+		return (Product) redisTemplate.opsForValue().get(String.valueOf(id));
+		//return convert(productRepositiry.findById(id).orElse(null));
 	}
 
 	private com.ecom.prodcut.entity.Product convert(Product product) {
@@ -80,6 +93,11 @@ public class ProductServiceImpl implements ProductService {
 		return productRepositiry.findByName(name).stream().map(product -> convert(product))
 				.collect(Collectors.toList());
 
+	}
+
+	private ResponseEntity<Response> fallbackMethod(Exception e) {
+		return new ResponseEntity<Response>(Response.builder().errorCode(408).errorMsg("CircuitBreaker error").build(),
+				HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS);
 	}
 
 }

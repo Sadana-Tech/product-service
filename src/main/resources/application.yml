@@ -1,0 +1,29 @@
+server:
+   port: 8081
+spring :
+   application :
+   name : product-service
+   datasource :
+      url : jdbc:mysql://localhost/product?
+      username : root
+      password : Kriday@6317
+   jpa :
+      properties :
+         hibernate :
+            dialect : org.hibernate.dialect.MySQLDialect
+            ddl-auto : update
+        
+management :
+   endpoint :     
+      health :
+         show-details: always
+   endpoints :
+      web :
+         exposure :
+            include : health
+   health :
+     circuitbreakers:
+      enabled: true
+      
+
+        
