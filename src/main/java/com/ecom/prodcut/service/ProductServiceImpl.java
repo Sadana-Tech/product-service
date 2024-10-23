@@ -49,8 +49,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product create(Product product) {
-		redisTemplate.opsForValue().set(String.valueOf(product.getId()), product);
-		return convert(productRepositiry.save(convert(product)));
+		Product productDB = convert(productRepositiry.save(convert(product)));
+		redisTemplate.opsForValue().set(String.valueOf(productDB.getId()), productDB);
+		return productDB;
 	}
 
 	@Override
@@ -67,8 +68,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getById(int id) {
 
-		return (Product) redisTemplate.opsForValue().get(String.valueOf(id));
-		//return convert(productRepositiry.findById(id).orElse(null));
+		return redisTemplate.opsForValue().get(String.valueOf(id));
+		// return convert(productRepositiry.findById(id).orElse(null));
 	}
 
 	private com.ecom.prodcut.entity.Product convert(Product product) {
